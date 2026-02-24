@@ -10,7 +10,6 @@ public class MenuBuilderTest {
 
     @Test
     void testExecutiveMenuComplete() {
-        // Menú complet amb tots els elements
         Menu menu = new MenuBuilder()
                 .withEntrant("Amanida Mediterrània")
                 .isVegan()
@@ -38,7 +37,6 @@ public class MenuBuilderTest {
 
     @Test
     void testKidsMenu() {
-        // Menú infantil: només plat principal, beguda i postres (sense entrant)
         Menu menu = new MenuBuilder()
                 .withMainCourse("Macarrons amb tomàquet")
                 .withDrink("Suc de taronja")
@@ -55,7 +53,6 @@ public class MenuBuilderTest {
 
     @Test
     void testHalfMenuWithCoffee() {
-        // Mig menú: plat principal, beguda i cafè (no postres)
         Menu menu = new MenuBuilder()
                 .withMainCourse("Risotto de bolets")
                 .isVegan()
@@ -73,7 +70,6 @@ public class MenuBuilderTest {
 
     @Test
     void testMenuWithoutDessertOrCoffee() {
-        // Menú sense postres ni cafè
         Menu menu = new MenuBuilder()
                 .withEntrant("Croquetes")
                 .withMainCourse("Paella")
@@ -91,7 +87,6 @@ public class MenuBuilderTest {
 
     @Test
     void testMainCourseWithMultipleConfigurations() {
-        // Plat principal amb múltiples configuracions
         Menu menu = new MenuBuilder()
                 .withMainCourse("Hamburguesa vegetal")
                 .isVegan()

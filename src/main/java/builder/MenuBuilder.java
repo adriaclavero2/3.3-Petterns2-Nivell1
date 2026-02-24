@@ -4,11 +4,6 @@ import interfaces.*;
 import models.Dish;
 import models.Menu;
 
-/**
- * MenuBuilder amb Progressive Interfaces utilitzant classes internes.
- * Cada configurador (EntrantConfigurator, MainCourseConfigurator) és una classe separada
- * que permet tenir mètodes amb el mateix nom però diferents comportaments.
- */
 public class MenuBuilder implements EntrantStep {
 
     private Dish entrant;
@@ -17,7 +12,6 @@ public class MenuBuilder implements EntrantStep {
     private String dessert;
     private String coffee;
 
-    // ==================== ENTRANT STEP ====================
 
     @Override
     public EntrantConfigStep withEntrant(String name) {
@@ -31,12 +25,6 @@ public class MenuBuilder implements EntrantStep {
         return new MainCourseConfigurator(this);
     }
 
-    // ==================== INNER CLASS: ENTRANT CONFIGURATOR ====================
-
-    /**
-     * Classe interna per configurar l'entrant.
-     * Permet tenir isVegan() i isGlutenFree() específics per l'entrant.
-     */
     private static class EntrantConfigurator implements EntrantConfigStep {
         private final MenuBuilder builder;
 
@@ -63,12 +51,6 @@ public class MenuBuilder implements EntrantStep {
         }
     }
 
-    // ==================== INNER CLASS: MAIN COURSE CONFIGURATOR ====================
-
-    /**
-     * Classe interna per configurar el plat principal.
-     * Permet tenir isVegan(), isGlutenFree() i withSupplement() específics pel plat principal.
-     */
     private static class MainCourseConfigurator implements MainCourseConfigStep {
         private final MenuBuilder builder;
 
@@ -101,11 +83,6 @@ public class MenuBuilder implements EntrantStep {
         }
     }
 
-    // ==================== INNER CLASS: DESSERT OR COFFEE CONFIGURATOR ====================
-
-    /**
-     * Classe interna per triar entre postres o cafè (excloents).
-     */
     private static class DessertOrCoffeeConfigurator implements DessertOrCoffeeStep, BuildStep {
         private final MenuBuilder builder;
 
